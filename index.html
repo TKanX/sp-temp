@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模糊搜索</title>
+<style>
+    /* 样式可以根据需要自行修改 */
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .search-container {
+        margin-top: 20px;
+    }
+    input[type="text"] {
+        padding: 8px;
+        width: 300px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: #f4f4f4;
+    }
+</style>
+</head>
+<body>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="输入关键字进行搜索">
+    <ul id="searchResults"></ul>
+</div>
+
+<script>
+    // 数据
+    const data = [
+        { term: "el/la abuelo/a", translation: "grandfather/grandmother", english: "grandfather/grandmother" },
+        { term: "los abuelos", translation: "grandparents", english: "grandparents" },
+        { term: "el/la amigo/a", translation: "friend", english: "friend" },
+        { term: "el apellido", translation: "last name", english: "last name" },
+        { term: "el/la artista", translation: "artist", english: "artist" },
+        { term: "el/la bisabuelo/a", translation: "great-grandfather/great-grandmother", english: "great-grandfather/great-grandmother" },
+        { term: "el/la cuñado/a", translation: "brother-in-law/sister-in-law", english: "brother-in-law/sister-in-law" },
+        { term: "el/la doctor(a), el/la médico/a", translation: "doctor; physician", english: "doctor; physician" },
+        { term: "el/la esposo/a", translation: "husband/wife; spouse", english: "husband/wife; spouse" },
+        { term: "la familia", translation: "family", english: "family" },
+        { term: "el/la gemelo/a", translation: "twin", english: "twin" },
+        { term: "la gente", translation: "people", english: "people" },
+        { term: "el/la hermanastro/a", translation: "stepbrother/stepsister", english: "stepbrother/stepsister" },
+        { term: "el/la hermano/a", translation: "brother/sister", english: "brother/sister" },
+        { term: "el/la hijastro/a", translation: "stepson/stepdaughter", english: "stepson/stepdaughter" },
+        { term: "el/la hijo/a", translation: "son/daughter", english: "son/daughter" },
+        { term: "los hijos", translation: "children", english: "children" },
+        { term: "el/la ingeniero/a", translation: "engineer", english: "engineer" },
+        { term: "la madrastra", translation: "stepmother", english: "stepmother" },
+        { term: "la madre", translation: "mother", english: "mother" },
+        { term: "el/la medio/a hermano/a", translation: "half-brother/half-sister", english: "half-brother/half-sister" },
+        { term: "el/la muchacho/a", translation: "boy/girl", english: "boy/girl" },
+        { term: "el/la nieto/a", translation: "grandson/granddaughter", english: "grandson/granddaughter" },
+        { term: "el/la niño/a", translation: "child", english: "child" },
+        { term: "el/la novio/a", translation: "boyfriend/girlfriend", english: "boyfriend/girlfriend" },
+        { term: "la nuera", translation: "daughter-in-law", english: "daughter-in-law" },
+        { term: "el padrastro", translation: "stepfather", english: "stepfather" },
+        { term: "el padre", translation: "father", english: "father" },
+        { term: "los padres", translation: "parents", english: "parents" },
+        { term: "los parientes", translation: "relatives", english: "relatives" },
+        { term: "el/la periodista", translation: "journalist", english: "journalist" },
+        { term: "la persona", translation: "person", english: "person" },
+        { term: "el/la primo/a", translation: "cousin", english: "cousin" },
+        { term: "el/la programador(a)", translation: "computer programmer", english: "computer programmer" },
+        { term: "el/la sobrino/a", translation: "nephew/niece", english: "nephew/niece" },
+        { term: "el/la suegro/a", translation: "father-in-law/mother-in-law", english: "father-in-law/mother-in-law" },
+        { term: "el/la tío/a", translation: "uncle/aunt", english: "uncle/aunt" },
+        { term: "el yerno", translation: "son-in-law", english: "son-in-law" }
+    ];
+
+    // 获取输入框和搜索结果列表
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+
+    // 监听输入框变化事件
+    searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        // 清空搜索结果列表
+        searchResults.innerHTML = "";
+        // 如果搜索框为空，不进行搜索
+        if (!searchTerm) {
+            return;
+        }
+        // 根据关键字进行搜索并展示结果
+        const filteredData = data.filter(item =>
+            item.term.toLowerCase().includes(searchTerm) || 
+            item.translation.toLowerCase().includes(searchTerm) ||
+            item.english.toLowerCase().includes(searchTerm)
+        );
+        filteredData.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.term} - ${item.translation} - ${item.english}`;
+            searchResults.appendChild(li);
+        });
+    });
+</script>
+
+</body>
+</html>
