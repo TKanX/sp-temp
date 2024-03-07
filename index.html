@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
 <body>
 
 <div class="search-container">
+    <h1>反西班牙语联盟（3月7日考试词汇查找器）</h1>
     <input type="text" id="searchInput" placeholder="输入关键字进行搜索">
     <ul id="searchResults"></ul>
 </div>
@@ -39,44 +40,44 @@
 <script>
     // 数据
     const data = [
-        { term: "el/la abuelo/a", translation: "grandfather/grandmother", english: "grandfather/grandmother" },
-        { term: "los abuelos", translation: "grandparents", english: "grandparents" },
-        { term: "el/la amigo/a", translation: "friend", english: "friend" },
-        { term: "el apellido", translation: "last name", english: "last name" },
-        { term: "el/la artista", translation: "artist", english: "artist" },
-        { term: "el/la bisabuelo/a", translation: "great-grandfather/great-grandmother", english: "great-grandfather/great-grandmother" },
-        { term: "el/la cuñado/a", translation: "brother-in-law/sister-in-law", english: "brother-in-law/sister-in-law" },
-        { term: "el/la doctor(a), el/la médico/a", translation: "doctor; physician", english: "doctor; physician" },
-        { term: "el/la esposo/a", translation: "husband/wife; spouse", english: "husband/wife; spouse" },
-        { term: "la familia", translation: "family", english: "family" },
-        { term: "el/la gemelo/a", translation: "twin", english: "twin" },
-        { term: "la gente", translation: "people", english: "people" },
-        { term: "el/la hermanastro/a", translation: "stepbrother/stepsister", english: "stepbrother/stepsister" },
-        { term: "el/la hermano/a", translation: "brother/sister", english: "brother/sister" },
-        { term: "el/la hijastro/a", translation: "stepson/stepdaughter", english: "stepson/stepdaughter" },
-        { term: "el/la hijo/a", translation: "son/daughter", english: "son/daughter" },
-        { term: "los hijos", translation: "children", english: "children" },
-        { term: "el/la ingeniero/a", translation: "engineer", english: "engineer" },
-        { term: "la madrastra", translation: "stepmother", english: "stepmother" },
-        { term: "la madre", translation: "mother", english: "mother" },
-        { term: "el/la medio/a hermano/a", translation: "half-brother/half-sister", english: "half-brother/half-sister" },
-        { term: "el/la muchacho/a", translation: "boy/girl", english: "boy/girl" },
-        { term: "el/la nieto/a", translation: "grandson/granddaughter", english: "grandson/granddaughter" },
-        { term: "el/la niño/a", translation: "child", english: "child" },
-        { term: "el/la novio/a", translation: "boyfriend/girlfriend", english: "boyfriend/girlfriend" },
-        { term: "la nuera", translation: "daughter-in-law", english: "daughter-in-law" },
-        { term: "el padrastro", translation: "stepfather", english: "stepfather" },
-        { term: "el padre", translation: "father", english: "father" },
-        { term: "los padres", translation: "parents", english: "parents" },
-        { term: "los parientes", translation: "relatives", english: "relatives" },
-        { term: "el/la periodista", translation: "journalist", english: "journalist" },
-        { term: "la persona", translation: "person", english: "person" },
-        { term: "el/la primo/a", translation: "cousin", english: "cousin" },
-        { term: "el/la programador(a)", translation: "computer programmer", english: "computer programmer" },
-        { term: "el/la sobrino/a", translation: "nephew/niece", english: "nephew/niece" },
-        { term: "el/la suegro/a", translation: "father-in-law/mother-in-law", english: "father-in-law/mother-in-law" },
-        { term: "el/la tío/a", translation: "uncle/aunt", english: "uncle/aunt" },
-        { term: "el yerno", translation: "son-in-law", english: "son-in-law" }
+        { term: "el/la abuelo/a", translation: "grandfather/grandmother", english: "grandfather/grandmother", chinese: "祖父/祖母" },
+        { term: "los abuelos", translation: "grandparents", english: "grandparents", chinese: "祖父母" },
+        { term: "el/la amigo/a", translation: "friend", english: "friend", chinese: "朋友" },
+        { term: "el apellido", translation: "last name", english: "last name", chinese: "姓氏" },
+        { term: "el/la artista", translation: "artist", english: "artist", chinese: "艺术家" },
+        { term: "el/la bisabuelo/a", translation: "great-grandfather/great-grandmother", english: "great-grandfather/great-grandmother", chinese: "曾祖父/曾祖母" },
+        { term: "el/la cuñado/a", translation: "brother-in-law/sister-in-law", english: "brother-in-law/sister-in-law", chinese: "姐夫/妹夫/嫂子/弟媳" },
+        { term: "el/la doctor(a), el/la médico/a", translation: "doctor; physician", english: "doctor; physician", chinese: "医生" },
+        { term: "el/la esposo/a", translation: "husband/wife; spouse", english: "husband/wife; spouse", chinese: "丈夫/妻子/配偶" },
+        { term: "la familia", translation: "family", english: "family", chinese: "家庭" },
+        { term: "el/la gemelo/a", translation: "twin", english: "twin", chinese: "双胞胎" },
+        { term: "la gente", translation: "people", english: "people", chinese: "人们" },
+        { term: "el/la hermanastro/a", translation: "stepbrother/stepsister", english: "stepbrother/stepsister", chinese: "继兄弟/继姐妹" },
+        { term: "el/la hermano/a", translation: "brother/sister", english: "brother/sister", chinese: "兄弟/姐妹" },
+        { term: "el/la hijastro/a", translation: "stepson/stepdaughter", english: "stepson/stepdaughter", chinese: "继子/继女" },
+        { term: "el/la hijo/a", translation: "son/daughter", english: "son/daughter", chinese: "儿子/女儿" },
+        { term: "los hijos", translation: "children", english: "children", chinese: "子女" },
+        { term: "el/la ingeniero/a", translation: "engineer", english: "engineer", chinese: "工程师" },
+        { term: "la madrastra", translation: "stepmother", english: "stepmother", chinese: "继母" },
+        { term: "la madre", translation: "mother", english: "mother", chinese: "母亲" },
+        { term: "el/la medio/a hermano/a", translation: "half-brother/half-sister", english: "half-brother/half-sister", chinese: "同父异母兄弟/同父异母姐妹" },
+        { term: "el/la muchacho/a", translation: "boy/girl", english: "boy/girl", chinese: "男孩/女孩" },
+        { term: "el/la nieto/a", translation: "grandson/granddaughter", english: "grandson/granddaughter", chinese: "孙子/孙女" },
+        { term: "el/la niño/a", translation: "child", english: "child", chinese: "孩子" },
+        { term: "el/la novio/a", translation: "boyfriend/girlfriend", english: "boyfriend/girlfriend", chinese: "男朋友/女朋友" },
+        { term: "la nuera", translation: "daughter-in-law", english: "daughter-in-law", chinese: "儿媳" },
+        { term: "el padrastro", translation: "stepfather", english: "stepfather", chinese: "继父" },
+        { term: "el padre", translation: "father", english: "father", chinese: "父亲" },
+        { term: "los padres", translation: "parents", english: "parents", chinese: "父母" },
+        { term: "los parientes", translation: "relatives", english: "relatives", chinese: "亲戚" },
+        { term: "el/la periodista", translation: "journalist", english: "journalist", chinese: "记者" },
+        { term: "la persona", translation: "person", english: "person", chinese: "人" },
+        { term: "el/la primo/a", translation: "cousin", english: "cousin", chinese: "堂兄/堂姐/表兄/表姐" },
+        { term: "el/la programador(a)", translation: "computer programmer", english: "computer programmer", chinese: "程序员" },
+        { term: "el/la sobrino/a", translation: "nephew/niece", english: "nephew/niece", chinese: "侄子/侄女" },
+        { term: "el/la suegro/a", translation: "father-in-law/mother-in-law", english: "father-in-law/mother-in-law", chinese: "岳父/岳母" },
+        { term: "el/la tío/a", translation: "uncle/aunt", english: "uncle/aunt", chinese: "叔伯/伯母/姑妈/姨妈" },
+        { term: "el yerno", translation: "son-in-law", english: "son-in-law", chinese: "女婿" }
     ];
 
     // 获取输入框和搜索结果列表
@@ -96,11 +97,12 @@
         const filteredData = data.filter(item =>
             item.term.toLowerCase().includes(searchTerm) || 
             item.translation.toLowerCase().includes(searchTerm) ||
-            item.english.toLowerCase().includes(searchTerm)
+            item.english.toLowerCase().includes(searchTerm) ||
+            item.chinese.includes(searchTerm)
         );
         filteredData.forEach(item => {
             const li = document.createElement("li");
-            li.textContent = `${item.term} - ${item.translation} - ${item.english}`;
+            li.textContent = `${item.term} - ${item.translation} - ${item.english} - ${item.chinese}`;
             searchResults.appendChild(li);
         });
     });
